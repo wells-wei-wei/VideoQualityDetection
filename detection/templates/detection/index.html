@@ -1,0 +1,44 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="王彪, wangbiao" />
+<title>基于caffe的图片病理分析</title>
+<link rel="stylesheet" href="{% static 'detection/css/style.css' %}">
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+</head>
+
+<body>
+<div class="bg"><img src="{% static 'detection/img/bg.jpg' %}" alt=""></div>
+<div class="header clearfix">
+    <a href=""><img src="{% static 'detection/img/bupt.jpg' %}" alt=""><span class="logo">视频质量检测系统</span></a>
+    <div class="left"><span class="login">login</span></div>
+</div>
+<div id="main">
+    <div id="body" class="light">
+    	<div id="content" class="show">
+            <form method="post" action="{% url 'check' %}">  
+                <input type="text" name="name" placeholder="视频路径"><br>
+                <input type="submit" value="提交"><br>
+            </form>
+        </div>       
+    </div>
+</div>
+<div class="layer_footer">
+    <span>© 2020 NGCSTT</span>
+    <span class="dot">·</span>
+    <a target="_blank" href="http://www.eyepacs.com/">相关网站</a>
+    <span class="dot">·</span>
+    <a href="" class="footer-mobile-show">联系我们</a>
+    <br />
+    <span>地址：北京市西土城路10号</span>
+</div>
+<!-- <script src="http://libs.baidu.com/jquery/1.4.4/jquery.js"></script>
+<script src="{% static 'detection/js/test.js' %}"></script> -->
+<!-- <script src="test.js"></script> -->
+
+
+</body>
+</html>
