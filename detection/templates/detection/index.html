@@ -19,7 +19,7 @@
 <div id="main">
     <div id="body" class="light">
     	<div id="content" class="show">
-            <form method="post" action="{% url 'check' %}">  
+            <form method="post" action="{% url 'check' %}">{% csrf_token %}
                 <input type="text" name="name" placeholder="视频路径"><br>
                 <input type="submit" value="提交"><br>
             </form>
