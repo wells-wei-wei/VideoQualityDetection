@@ -8,7 +8,6 @@ import os
 import time
 from ctypes import *
 from multiprocessing import Pool, Process
-from .tasks import wrap_ctypes
 
 # Create your views here.
 # @csrf_exempt
@@ -23,20 +22,7 @@ def scan_files(file_path):
 
     return video_files
 
-vqd=cdll.LoadLibrary('/home/wells/VideoDetection/libvdq.so')
 task_queue = RedisQueue('tasks')
-progress_list = RedisQueue('progressList')
-result_list = RedisQueue('resultList')
-
-def read_progress_result():
-    f = open("data.txt",'a')
-    while True:
-        progress = progress_list.get_nowait()
-        result=result_list.get_nowait()
-        if progress:
-            print("progress: "+progress.decode())
-        if result:
-            print("result: "+result.decode())
 
 # def wrap_ctypes(video_id, file_path):
 #     print("wrap_ctypes")
@@ -46,23 +32,6 @@ def test():
     while 1:
         print(os.getpid())
         time.sleep(1)
-
-def detect_video_quality():
-    i=1
-    while True:
-        result = task_queue.get_nowait()
-        if not result:
-            continue
-        wrap_ctypes.delay(i,result.decode())
-        i=i+1
-
-
-
-detection_progress=Process(target=detect_video_quality)
-detection_progress.start()
-
-result_progress=Process(target=read_progress_result)
-result_progress.start()
 
 def reg(request):
     if request.method == 'POST':
