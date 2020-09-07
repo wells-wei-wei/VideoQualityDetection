@@ -35,18 +35,18 @@ def detect_video_quality():
         i=i+1
 
 def read_progress_result():
-    f = open("data.txt",'a')
+    # f = open("data.txt",'a')
     while True:
         progress = progress_list.get_nowait()
         result=result_list.get_nowait()
         if progress:
-            print(os.getpid())
+            #print(os.getpid())
             print("progress: "+progress.decode())
-            f.write(str(os.getpid()))
+            #f.write(str(os.getpid()))
         if result:
-            print(os.getpid())
+            #print(os.getpid())
             print("result: "+result.decode())
-            f.write(str(os.getpid()))
+            #f.write(str(os.getpid()))
 
 detection_progress=Process(target=detect_video_quality)
 detection_progress.start()

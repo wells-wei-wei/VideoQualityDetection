@@ -24,10 +24,6 @@ def scan_files(file_path):
 
 task_queue = RedisQueue('tasks')
 
-# def wrap_ctypes(video_id, file_path):
-#     print("wrap_ctypes")
-#     return vdq.Vqd(video_id, detection_item, file_path)
-
 def test():
     while 1:
         print(os.getpid())
