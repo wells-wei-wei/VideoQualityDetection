@@ -8,6 +8,8 @@ import os
 import time
 from ctypes import *
 from multiprocessing import Pool, Process
+from detection.models import Task
+from django.utils import timezone
 
 # Create your views here.
 # @csrf_exempt
@@ -32,11 +34,15 @@ def test():
 def reg(request):
     if request.method == 'POST':
         name=request.POST.get('name')
-    print(name)
     video_files=scan_files(name)
     
+    new_task = Task(task_name=name, start_time=timezone.now(), finish_time=timezone.now())
+    new_task.save()
+
     for file in video_files:
         #print(file)
+        file=str(new_task.id)+"-"+file
+        # print(file)
         task_queue.put(file)
     return render(request, 'detection/index.html')
 

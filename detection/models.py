@@ -3,13 +3,14 @@ from django.db import models
 # Create your models here.
 class Task(models.Model):
     task_name=models.CharField(max_length=200)
+    #detection_item=models.CharField(max_length=100)
     start_time=models.DateTimeField('date published')
     finish_time=models.DateTimeField('date published')
 
 class Video(models.Model):
     task=models.ForeignKey(Task, on_delete=models.CASCADE)
     video_name=models.CharField(max_length=200)
-    detection_status=models.DateTimeField('date published')
+    detection_status=models.FloatField(default=0.0)
 
 class Error(models.Model):
     video=models.ForeignKey(Video, on_delete=models.CASCADE)
