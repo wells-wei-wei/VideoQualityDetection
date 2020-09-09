@@ -36,7 +36,7 @@ def reg(request):
         name=request.POST.get('name')
     video_files=scan_files(name)
     
-    new_task = Task(task_name=name, video_num=len(video_files) ,start_time=timezone.now(), finish_time=timezone.now())
+    new_task = Task(task_name=name, video_num=len(video_files) ,start_time=timezone.now(), finish_time=timezone.now(), detection_item="0010011000100000", task_status="未检测")
     new_task.save()
 
     for file in video_files:

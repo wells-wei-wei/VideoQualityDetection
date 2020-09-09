@@ -40,6 +40,8 @@ class Task_Manager():
     def add_new_video(self, task_id, video_id, video_num):
         if self.task_video.__contains__(task_id) is False:
             self.task_video.setdefault(task_id,video_num)
+            task_update=Task.objects.get(id=task_id)
+            task_update.task_status="正在检测"
         self.video_task.setdefault(video_id, task_id)
         # self.task_video[task_id]=self.task_video[task_id]-1
     def add_video_worker(self, video_id, worker_id):
@@ -56,6 +58,10 @@ class Task_Manager():
                 if self.task_video[current_task_id] is 0:
                     task_finish_update=Task.objects.get(id=current_task_id)
                     task_finish_update.finish_time=timezone.now()
+                    if len(Video.objects.filter(task_id=current_task_id).exclude(detection_status=1.0)) is 0:
+                        task_finish_update.task_status="检测完成"
+                    else:
+                        task_finish_update.task_status="检测异常"
                     task_finish_update.save()
                     self.task_video.pop(current_task_id)
                     print("任务 "+str(current_task_id)+" 完成")
@@ -114,8 +120,8 @@ def read_progress_result():
             #print(os.getpid())
             #f.write(str(os.getpid()))
 
-detection_progress=Process(target=detect_video_quality)
-detection_progress.start()
-
 result_progress=Process(target=read_progress_result)
 result_progress.start()
+
+detection_progress=Process(target=detect_video_quality)
+detection_progress.start()
