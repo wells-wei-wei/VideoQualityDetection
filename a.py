@@ -6,7 +6,7 @@ from redis_queue import RedisQueue
 vqd=cdll.LoadLibrary('/home/wells/VideoDetection/libvdq.so')
 celery_app = Celery('a', broker='redis://localhost:6379/0')
 task_queue = RedisQueue('tasks')
-
+u=task_queue.qsize()
 tas=[]
 
 def test():

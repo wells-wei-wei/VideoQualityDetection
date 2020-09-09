@@ -23,3 +23,12 @@ class RedisQueue(object):
         # 直接返回队列第一个元素，如果队列为空返回的是None
         item = self.__db.lpop(self.key)  
         return item
+    
+    def get_all_keys(self):
+        return self.__db.keys()
+
+    def remove_all(self):
+        keys=self.__db.keys()
+        if len(keys)==0:
+            return
+        self.__db.delete(*keys)

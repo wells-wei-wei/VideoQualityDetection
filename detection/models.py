@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Task(models.Model):
     task_name=models.CharField(max_length=200)
+    video_num=models.IntegerField(default=0)
     #detection_item=models.CharField(max_length=100)
     start_time=models.DateTimeField('date published')
     finish_time=models.DateTimeField('date published')
