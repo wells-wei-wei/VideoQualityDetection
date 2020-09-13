@@ -83,13 +83,15 @@ WSGI_APPLICATION = 'VideoQualityDetection.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'VideoQualityDetection',
-        'USER':'django',
-        'PASSWORD':'Wdsr19961005.',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
-        'OPTIONS': {'charset': 'utf8mb4'},
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME':'VideoQualityDetection',
+        # 'USER':'root',
+        # 'PASSWORD':'mysql151',
+        # 'HOST':'127.0.0.1',
+        # 'PORT':'3306',
+        # 'OPTIONS': {'charset': 'utf8mb4'},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
     }
 }
 
@@ -131,3 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SIMPLEUI_CONFIG = {
+    'system_keep': True,
+    'menu_display': ['Detection', 'Errors', 'Logs', 'Tasks', 'Videos', 'Detect'],
+    'menus': [{
+        'name': 'Detect',
+        'url': '../',
+    }]
+}
