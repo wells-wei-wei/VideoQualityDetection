@@ -31,7 +31,7 @@ SECRET_KEY = 'ovc=x#dju%)+s7p#cs1)jqa_hutx%-$@rql+%9w95e_p2k(36w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,15 +83,15 @@ WSGI_APPLICATION = 'VideoQualityDetection.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME':'VideoQualityDetection',
-        # 'USER':'root',
-        # 'PASSWORD':'mysql151',
-        # 'HOST':'127.0.0.1',
-        # 'PORT':'3306',
-        # 'OPTIONS': {'charset': 'utf8mb4'},
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'VideoQualityDetection',
+        'USER':'root',
+        'PASSWORD':'mysql151',
+        'HOST':'10.103.238.151',
+        'PORT':'3306',
+        'OPTIONS': {'charset': 'utf8mb4'},
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': 'db.sqlite3'
     }
 }
 

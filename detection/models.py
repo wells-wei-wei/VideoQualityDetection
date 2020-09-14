@@ -6,7 +6,6 @@ class Task(models.Model):
     video_num=models.IntegerField(default=0)
     task_status=models.CharField(max_length=200, default="")
     detection_item=models.CharField(max_length=200, default="")
-    #detection_item=models.CharField(max_length=100)
     start_time=models.DateTimeField('date published')
     finish_time=models.DateTimeField('date published')
 
